@@ -1,0 +1,30 @@
+.topnav {
+    overflow: hidden;
+    background-color: #f6f6f8;
+    color: #878787;
+    .content-header {
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        .logo-page {
+            img {
+                width: 60px;
+            }
+            .line {
+                padding: 0 !important;
+                margin-left: 16px;
+                border-left: 2px solid #fff;
+            }
+            a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+        }
+    }
+    .content-right{
+        float: right !important;
+    }
+    
+}

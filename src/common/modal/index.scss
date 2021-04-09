@@ -1,0 +1,29 @@
+.ui{
+    .modal{
+        width: 30% !important;
+        text-align: center !important;
+        height: auto;
+    }
+    
+}
+.dimmer{
+    background-color: rgba(0,0,0,0.5) !important;
+}
+.input>input:focus{
+    border-color: green;
+}
+.field{
+    text-transform: capitalize !important;
+    .radio{
+        label{
+            font-size: 16px;
+        }
+    }
+}
+.continute{
+    background: green;
+    color: #fff;
+    border: none;
+    width: 32%;
+    padding: 15px;
+}

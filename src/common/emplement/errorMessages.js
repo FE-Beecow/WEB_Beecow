@@ -1,0 +1,10 @@
+export const isRequired = fieldName => `${fieldName} is required`;
+export const mustMatch = otherFieldName => fieldName => `${fieldName} must match ${otherFieldName}`;
+export const minLength = length => fieldName => `${fieldName} must be at least ${length} characters`;
+export const mustPositive = fieldName => `${fieldName} must be a positive input`;
+export const notSelect = fieldName => `${fieldName} must be selected`;
+export const isEmail = fieldName => `'${fieldName || 'Email'}' must type email.`;
+export const isIdentify = fieldName => `${fieldName} must a valid XML-identifier`;
+export const isNumber = fieldName => `'${fieldName}' must a valid number`;
+export const isInterger = fieldName => `${fieldName} must be greater than 0`;
+export const isPasswordErorr = `Password invalid.`;

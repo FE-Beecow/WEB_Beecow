@@ -1,0 +1,84 @@
+.content-block {
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    .banner {
+        opacity: 0.5;
+        img {
+            min-width: 100%;
+        }
+    }
+    .content-page {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 10%;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        box-shadow: 0.5px 0.5px 10px 10px green;
+        .title {
+            font-size: 20px;
+            .text {
+                font-style: italic;
+                font-family: Georgia, Times, Times New Roman, serif;
+            }
+        }
+    }
+}
+
+.form {
+    form {
+        font-size: 14px;
+        .form-group {
+            input {
+                padding: 10px 40px;
+                border: 1px solid;
+                color: #ddd;
+                border-radius: 5px;
+                margin: 10px;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            .text-error{
+                color: red;
+                font-size: 14px;
+                font-weight: 500;
+                margin: 0;
+              }
+        }
+        button {
+            background-color: green;
+            border: none;
+            padding: 18px;
+            width: 70%;
+            color: #fff;
+            font-size: 15px;
+            font-family: "Montserrat", sans-serif;
+            /* font-size: 12px; */
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 15px;
+        }
+        .fogot-pass{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .question {
+            font-size: 14px;
+            .sign-up{
+                color: #32CD32;
+                cursor: pointer;
+            }
+            .sign-up:hover {
+                color: green;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+    }
+}
