@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import _ from 'lodash'
 import { setToken } from '../../utils/storage'
-import { getAllBusiness, login } from '../actions/user'
+import { getAllBusiness, login, register } from '../actions/user'
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
     currentUser: null,
-    bussiness: null
+    bussiness: null,
+    currentBusinessId: null
   },
   reducers: {
     setBussiness: (state, action) => {
@@ -15,6 +16,9 @@ const userSlice = createSlice({
     },
     login: (state, action) => {
       state.currentUser = action.payload
+    },
+    setBusiness: (state, action) => {
+      state.currentBusinessId = action.payload
     }
   },
   extraReducers: {
@@ -26,10 +30,12 @@ const userSlice = createSlice({
       setToken(false, action.payload.data)
     },
     [login.rejected]: (state, action) => {
-
     },
     [getAllBusiness.fulfilled]: (state, action) => {
       state.business = action.payload.data
+    },
+    [register.fulfilled]: (state, action) => {
+      state.fullName = action?.payload?.data?.fullName
     }
   }
 })

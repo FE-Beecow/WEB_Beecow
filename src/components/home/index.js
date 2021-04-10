@@ -15,24 +15,34 @@ class Home extends Component {
             isOpen: false
         }
         this.loginModalRef = React.createRef();
-        this.registerModalRef = React.createRef();
-        this.chooseBusiness = React.createRef();
+        this.chooseBusinessRef = React.createRef();
+        this.onChooseBusiness = this.onChooseBusiness.bind(this)
     }
 
     onLoginClick() {
         this.loginModalRef.current.handleShow()
     }
 
-    goToRegister() {
-        this.registerModalRef.current.handleShow()
-    }
+    // goToRegister() {
+    //     this.registerModalRef.current.handleShow()
+    // }
 
     onChooseBusiness() {
-        this.chooseBusiness.current.handleShow()
+        this.chooseBusinessRef.current.handleShow()
+    }
+
+    renderUser() {
+        const { user } = this.props
+        if(user.currentUser){
+            return <> <span className='user-name'><i className="fa fa-user-o" aria-hidden="true"></i>{user?.currentUser?.username}</span></>
+        }
+        else{
+            return <><span className='user-name' onClick={this.onLoginClick}><i className="fa fa-user-o" aria-hidden="true"></i>Sign In</span></>
+        }
     }
 
     render() {
-        const { user } = this.props
+        
         return (
             <div className='topnav '>
                 <div className='content-header' >
@@ -51,22 +61,14 @@ class Home extends Component {
                 <div className='content-header content-right' href='# '>
                     <ModalLogin
                         ref={this.loginModalRef}
-                        goToRegister={this.goToRegister.bind(this)}
-                        onChooseBusiness={this.onChooseBusiness.bind(this)}
-                    />
-                    <RegisterModal
-                        ref={this.registerModalRef}
-                        openLogin={this.onLoginClick}
+                        //goToRegister={this.goToRegister.bind(this)}
+                        onChooseBusiness={this.onChooseBusiness}
                     />
                     <BusinessModal
-                        ref={this.chooseBusiness}
-                        goToRegister={this.goToRegister.bind(this)}
+                        ref={this.chooseBusinessRef}
                     />
                     {
-                        user.currentUser && <span><i className="fa fa-user-circle-o"></i>{user?.currentUser?.email}</span>
-                    }
-                    {
-                        !user.currentUser && <span onClick={this.onLoginClick}><i className="fa fa-user-circle-o"></i>{user?.currentUser?.email}</span>
+                       this.renderUser()
                     }
                 </div>
             </div>

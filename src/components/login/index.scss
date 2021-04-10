@@ -28,57 +28,64 @@
 }
 
 .form {
-    form {
-        font-size: 14px;
-        .form-group {
-            input {
-                padding: 10px 40px;
-                border: 1px solid;
-                color: #ddd;
-                border-radius: 5px;
-                margin: 10px;
-            }
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-            .text-error{
-                color: red;
-                font-size: 14px;
-                font-weight: 500;
-                margin: 0;
-              }
+    font-size: 14px;
+    .form-group {
+        input {
+            padding: 10px 40px 10px 7px;
+            border: 1px solid;
+            color: #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 100%;
         }
-        button {
-            background-color: green;
-            border: none;
-            padding: 18px;
-            width: 70%;
-            color: #fff;
-            font-size: 15px;
-            font-family: "Montserrat", sans-serif;
-            /* font-size: 12px; */
-            font-weight: 700;
-            border-radius: 25px;
-            cursor: pointer;
-            margin: 15px;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
-        .fogot-pass{
-            cursor: pointer;
-            text-decoration: underline;
+   
+        .text-red {
+            color: red;
+            margin-left: 5px;
         }
-        .question {
+        .text-error {
+            color: red;
             font-size: 14px;
-            .sign-up{
-                color: #32CD32;
-                cursor: pointer;
-            }
-            .sign-up:hover {
-                color: green;
-                font-weight: bold;
-                text-decoration: underline;
-            }
+            font-weight: 500;
+            margin: 0;
         }
+    }
+    button {
+        background-color: green;
+        border: none;
+        padding: 0.8em;
+        width: 100%;
+        color: #fff;
+        font-size: 15px;
+        font-family: "Montserrat", sans-serif;
+        /* font-size: 12px; */
+        font-weight: 700;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 15px 0;
+        float: left;
+    }
+}
+.fogot-pass {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.question {
+    font-size: 14px;
+    margin: 10px 0 35px 0;
+    .sign-up {
+        color: #32cd32;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    .sign-up:hover {
+        color: green;
+        font-weight: bold;
+        text-decoration: underline;
     }
 }

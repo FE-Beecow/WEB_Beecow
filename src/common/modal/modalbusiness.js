@@ -4,7 +4,8 @@ import './index.scss'
 import { Form, Radio } from 'semantic-ui-react'
 import { notSelect } from '../emplement/definition'
 import { connect } from 'react-redux'
-import { getAllBusiness } from '../../redux/actions/user'
+import { getAllBusiness, setBusiness } from '../../redux/actions/user'
+import { withRouterInnerRef } from '../../common/HOC/routerFowardRef'
 
 class BusinessModal extends React.Component {
   constructor(props) {
@@ -32,17 +33,17 @@ class BusinessModal extends React.Component {
   }
   handleChange = (e, { value }) => {
     this.setState({ businessId: value })
+    this.props.setBusiness(value)
   }
 
   handleNext() {
-    let { business, textError } = this.state;
-    textError = notSelect(textError)
-    this.handleClose();
-    this.props.goToRegister()
+    this.props.history.push('/register')
   }
+
   render() {
     const { open, businessId } = this.state
     const { business } = this.props
+    const buttonClass = `continute ${businessId ? '' : 'disable'}`
     return (
       <div className='modal-login'>
         <Modal
@@ -70,7 +71,7 @@ class BusinessModal extends React.Component {
                 ))
               }
               <p>{this.state.textError}</p>
-              <button className='continute' onClick={this.handleNext}>Continute</button>
+              <button className={buttonClass} onClick={this.handleNext}>Continute</button>
             </Form>
           </Modal.Content>
         </Modal>
@@ -84,7 +85,8 @@ const mapStateToProps = ({ user }) => ({
 })
 
 const mapDispatchToProps = {
-  getAllBusiness
+  getAllBusiness,
+  setBusiness
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(BusinessModal)
+export default withRouterInnerRef(connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(BusinessModal))

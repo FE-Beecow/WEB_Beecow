@@ -1,6 +1,6 @@
 @import "variable";
-@import '../common/modal/index';
-@import '../components/home/index';
-@import '../components/login/index';
 
-
+.disable {
+  opacity: 0.5;
+  cursor: none !important;
+}

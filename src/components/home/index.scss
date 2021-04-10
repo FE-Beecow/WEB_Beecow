@@ -23,8 +23,21 @@
             }
         }
     }
-    .content-right{
+    .content-right {
         float: right !important;
+        .user-name {
+            cursor: pointer;
+            .fa {
+                font-size: 17px;
+                border-radius: 100%;
+                padding: 14px;
+                background-color: #e8f8f7;
+                color: #0e4a2e;
+                margin-right: 4px;
+            }
+            .fa:hover {
+                background-color: #a8b325;
+            }
+        }
     }
-    
 }

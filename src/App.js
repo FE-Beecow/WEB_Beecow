@@ -8,6 +8,7 @@ import {
 import Home from './components/home';
 import FormLogin from './components/login/formLogin';
 import LoginModal from './components/login/modalLogin';
+import FormRegister from './components/register/formRegister';
 
 export default class App extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class App extends Component {
           <div className="App">
             <Route path="/" exact component={Home} />
             <Route path="/login" component={LoginModal} />
+            <Route path="/register" component={FormRegister} />
           </div>
         </Router>
       </div>

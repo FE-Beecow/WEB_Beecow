@@ -11,7 +11,7 @@ class FormLogin extends Component {
   constructor(props) {
     super(props)
     this.onChooseBusiness = this.onChooseBusiness.bind(this)
-    this.goToRegister = this.goToRegister.bind(this)
+    //this.goToRegister = this.goToRegister.bind(this)
     this.state = {
       emailError: null,
       passwordError: null,
@@ -23,10 +23,10 @@ class FormLogin extends Component {
     }
   }
 
-  goToRegister() {
-    this.props.onClose()
-    this.props.goToRegister()
-  }
+  // goToRegister() {
+  //   this.props.onClose()
+  //   this.props.goToRegister()
+  // }
   onChooseBusiness() {
     this.props.onClose()
     this.props.onChooseBusiness()
@@ -68,43 +68,43 @@ class FormLogin extends Component {
   render() {
     const { email, password, emailError, passwordError } = this.state
     return (
-      <div className='form'>
-        <Form name='form' onSubmit={this.handleSubmit}>
+      <div>
+        <Form className='form' name='form' onSubmit={this.handleSubmit}>
           <div className='form-group'>
+            <label>Email address or phone number </label><span className='text-red'>*</span>
             <input
               id='email'
               name='email'
               type='text'
               onChange={this.handleChange}
               value={email}
-              onKeyPress={this.handleKeyPress}
-              placeholder='Enter email or number' />
+              onKeyPress={this.handleKeyPress} 
+              placeholder='Please input your email or phone number'/>
             <p className='text-error'>{emailError}</p>
           </div>
           <div className='form-group'>
+            <label>Password</label><span className='text-red'>*</span>
             <input
               id='password'
               name='password'
               type='password'
               onChange={this.handleChange}
               value={password}
-              onKeyPress={this.handleKeyPress}
-              placeholder='Enter Password' />
+              onKeyPress={this.handleKeyPress} 
+              placeholder='Please input your password'/>
             <p className='text-error'>{passwordError}</p>
+            <button type='submit' className='btn btn-primary'>Login</button>
           </div>
           {/* <div className='form-group form-check'>
             <input type='checkbox' className='form-check-input' id='exampleCheck1' />
             <label className='form-check-label' for='exampleCheck1'>Check me out</label>
           </div> */}
-          <button type='submit' className='btn btn-primary'>Login</button>
-          <p className='fogot-pass'>Forgot password?</p>
-          <p className='question'>Don't have an account yet?
-            <span className='sign-up' onClick={this.onChooseBusiness} >Sign up</span>
-            {/* <span className='sign-up' onClick={this.goToRegister} >Sign up</span> */}
-          </p>
         </Form>
+        <div className='fogot-pass'>Forgot password?</div>
+        <div className='question'>Don't have an account yet?
+            <span className='sign-up' onClick={this.onChooseBusiness} >Sign up</span>
+        </div>
       </div>
-
     )
   }
 }

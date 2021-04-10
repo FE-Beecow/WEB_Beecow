@@ -1,26 +1,37 @@
-.ui{
-    .modal{
-        width: 30% !important;
-        text-align: center !important;
+.ui {
+    .modal {
+        width: 36% !important;
         height: auto;
     }
-    
+    .content{
+        padding: 0 52px !important;
+    }
+    .header {
+        border-bottom: none !important;
+        font-size: 20px !important;
+        font-family: mazzard soft h, helveticaneue-light, helvetica neue light, helvetica neue, Helvetica, Arial,
+            lucida grande, sans-serif;
+        clear: both;
+        color: #0a472e !important;
+        text-align: left;
+        padding: 31px 52px 15px !important;
+    }
 }
-.dimmer{
-    background-color: rgba(0,0,0,0.5) !important;
+.dimmer {
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
-.input>input:focus{
+.input > input:focus {
     border-color: green;
 }
-.field{
+.field {
     text-transform: capitalize !important;
-    .radio{
-        label{
+    .radio {
+        label {
             font-size: 16px;
         }
     }
 }
-.continute{
+.continute {
     background: green;
     color: #fff;
     border: none;

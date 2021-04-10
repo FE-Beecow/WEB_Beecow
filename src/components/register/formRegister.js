@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import './register.scss';
 import Form from "react-bootstrap/Form";
 import { validPassword, isEmailValid, validNumber } from '../../common/emplement/definition';
-import CheckboxCategories from '../../common/checkbox/categoriesCheckbox';
-import CheckboxShipper from '../../common/checkbox/shipperCheckbox';
+import CheckList from '../../common/components/checkList';
+import { shipperOpptions } from '../../common/constants';
+import { connect } from 'react-redux';
+import { register } from '../../redux/actions/user'
 
-export default class FormComponent extends Component {
-
+class FormRegister extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
+      fullName: '',
       password: '',
       email: '',
       address: '',
@@ -19,7 +20,7 @@ export default class FormComponent extends Component {
       passwordError: null,
       phoneNumberError: null,
       validationErrors: {},
-      //date = date.calendar(),
+      phone: ''
     }
     this.handleLogin = this.handleLogin.bind(this)
   }
@@ -34,9 +35,10 @@ export default class FormComponent extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const isFormValid = this.validate()
-    const { email, password } = this.state
-    if (isFormValid && email === 'admin@gmail.com' && password === '123456') {
-      this.goToHomePage()
+    const { email, password, fullName, phone, address } = this.state
+    const { businessId } = this.props
+    if (isFormValid) {
+      this.props.register({ email, password, fullName, phone, address, businessId })
     }
   }
 
@@ -63,13 +65,13 @@ export default class FormComponent extends Component {
   }
 
   renderCategories() {
-    let bussiness = ''
-    if(bussiness === 'shipper') {
-      return <><CheckboxShipper {...this.props} /></>
-    } else if(bussiness === 'buyer') {
+    let bussiness = 'shipper'
+    if (bussiness === 'shipper') {
+      return <><CheckList name='Shipping Type' options={shipperOpptions} /></>
+    } else if (bussiness === 'buyer') {
       return <><span>buyer</span></>
     }
-    return <><CheckboxCategories {...this.props} /></>
+    //return <><CheckboxCategories {...this.props} /></>
   }
 
   render() {
@@ -83,7 +85,7 @@ export default class FormComponent extends Component {
               name='fullName'
               type='text'
               value={fullName}
-              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
               placeholder='Full name...' />
             <p className='text-error'></p>
           </div>
@@ -101,7 +103,7 @@ export default class FormComponent extends Component {
           <div className='form-group'>
             <input
               id='phoneNumber'
-              name='phoneNumber'
+              name='phone'
               type='number'
               onChange={this.handleChange}
               value={phoneNumber}
@@ -126,7 +128,7 @@ export default class FormComponent extends Component {
               name='comfirmPassword'
               type='password'
               value={comfirmPassword}
-              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
               placeholder='Comfirm Password' />
             <p className='text-error'>{passwordError}</p>
           </div>
@@ -136,32 +138,36 @@ export default class FormComponent extends Component {
               name='address'
               type='text'
               value={address}
-              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
               placeholder='Address' />
 
           </div>
           <div className="ui calendar" id="example1">
             <div className="ui input left icon">
               {/* <i className="calendar icon"></i> */}
-              <input type="date" placeholder="Date of Birth" />
+              <input type="date" name='dob' placeholder="Date of Birth" />
             </div>
           </div>
           <div className='form-group'>
-            <p>categories</p>
-           
           </div>
-
           {
             this.renderCategories()
           }
-
           <button type='submit' className='btn btn-primary' onClick={this.loginAction}>Register</button>
           <p className='question'>Already registered?
             <span className='sign-up' onClick={this.handleLogin}>Log In</span>
           </p>
         </Form>
       </div>
-
     )
   }
 }
+const mapStateToProps = ({ user }) => ({
+  businessId: user.currentBusinessId
+})
+
+const mapDispatchToProps = {
+  register
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormRegister)
