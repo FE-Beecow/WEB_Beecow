@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import './checkbox.scss'
 
 export default class CheckList extends React.Component {
@@ -9,10 +9,10 @@ export default class CheckList extends React.Component {
   render() {
     const { name, options } = this.props
     return (
-      <div className='checkbox'>
+      <div className='checkboxBusiness'>
         <p>{name}</p>
         <ul>
-          {options?.map((e) => <li><Checkbox value={e.value} label={e.text} /></li>)}
+          {options?.map((e, i) => <li key={i}><Form.Checkbox label={e.text} value={e.value} /></li>)}
         </ul>
       </div>
     )

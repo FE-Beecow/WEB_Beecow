@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './register.scss';
-import Form from "react-bootstrap/Form";
 import { validPassword, isEmailValid, validNumber } from '../../common/emplement/definition';
 import CheckList from '../../common/components/checkList';
-import { shipperOpptions } from '../../common/constants';
+import { shipperOpptions, genderOptions } from '../../common/constants';
 import { connect } from 'react-redux';
 import { register } from '../../redux/actions/user'
+import { Form, Select } from 'semantic-ui-react'
 
 class FormRegister extends Component {
   constructor(props) {
@@ -65,21 +65,23 @@ class FormRegister extends Component {
   }
 
   renderCategories() {
-    let bussiness = 'shipper'
-    if (bussiness === 'shipper') {
+    const { businessId, business } = this.props
+    const { name } = business.find((b) => b.id === businessId)
+    if (name === 'Shipper') {
       return <><CheckList name='Shipping Type' options={shipperOpptions} /></>
-    } else if (bussiness === 'buyer') {
-      return <><span>buyer</span></>
+    } else if (name === 'Farmer') {
+      return <><CheckList name='Categories' options={shipperOpptions} /></>
     }
-    //return <><CheckboxCategories {...this.props} /></>
   }
 
   render() {
     const { email, address, password, emailError, phoneNumberError, passwordError, comfirmPassword, phoneNumber, fullName } = this.state
     return (
-      <div className='form'>
+      <div className='form-register  col-md-5 offset-md-3'>
+        <p className='title-page'>Register</p>
         <Form name='form' onSubmit={this.handleSubmit}>
-          <div className='form-group'>
+          <Form.Field>
+            <label>Full Name</label><span className='text-red'>*</span>
             <input
               id='fullName'
               name='fullName'
@@ -87,9 +89,10 @@ class FormRegister extends Component {
               value={fullName}
               onChange={this.handleChange}
               placeholder='Full name...' />
-            <p className='text-error'></p>
-          </div>
-          <div className='form-group'>
+            <div className='text-error'></div>
+          </Form.Field>
+          <Form.Field>
+            <label>Email</label><span className='text-red'>*</span>
             <input
               id='email'
               name='email'
@@ -99,8 +102,9 @@ class FormRegister extends Component {
               onKeyPress={this.handleKeyPress}
               placeholder='Email' />
             <p className='text-error'>{emailError}</p>
-          </div>
-          <div className='form-group'>
+          </Form.Field>
+          <Form.Field>
+            <label>Phone</label><span className='text-red'>*</span>
             <input
               id='phoneNumber'
               name='phone'
@@ -109,9 +113,11 @@ class FormRegister extends Component {
               value={phoneNumber}
               onKeyPress={this.handleKeyPress}
               placeholder='Phone number' />
+            <br />
             <p className='text-error'>{phoneNumberError}</p>
-          </div>
-          <div className='form-group'>
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label><span className='text-red'>*</span>
             <input
               id='password'
               name='password'
@@ -121,8 +127,9 @@ class FormRegister extends Component {
               onKeyPress={this.handleKeyPress}
               placeholder='Password' />
             <p className='text-error'>{passwordError}</p>
-          </div>
-          <div className='form-group'>
+          </Form.Field>
+          <Form.Field>
+            <label>Re-enter Password</label><span className='text-red'>*</span>
             <input
               id='comfirmPassword'
               name='comfirmPassword'
@@ -131,8 +138,9 @@ class FormRegister extends Component {
               onChange={this.handleChange}
               placeholder='Comfirm Password' />
             <p className='text-error'>{passwordError}</p>
-          </div>
-          <div className='form-group'>
+          </Form.Field>
+          <Form.Field>
+            <label>Address</label><span className='text-red'>*</span>
             <input
               id='address'
               name='address'
@@ -140,16 +148,24 @@ class FormRegister extends Component {
               value={address}
               onChange={this.handleChange}
               placeholder='Address' />
-
-          </div>
-          <div className="ui calendar" id="example1">
-            <div className="ui input left icon">
-              {/* <i className="calendar icon"></i> */}
-              <input type="date" name='dob' placeholder="Date of Birth" />
+          </Form.Field>
+          <Form.Field
+            control={Select}
+            options={genderOptions}
+            label={{ children: 'Gender', htmlFor: 'form-select-control-gender' }}
+            placeholder='Gender'
+            search
+            searchInput={{ id: 'form-select-control-gender' }}
+          />
+          <Form.Field>
+            <label>Date of Birth</label><span className='text-red'>*</span>
+            <div className="ui calendar" id="example1">
+              <div className="ui input left icon">
+                {/* <i className="calendar icon"></i> */}
+                <input type="date" name='dob' placeholder="Date of Birth" />
+              </div>
             </div>
-          </div>
-          <div className='form-group'>
-          </div>
+          </Form.Field>
           {
             this.renderCategories()
           }
@@ -162,9 +178,12 @@ class FormRegister extends Component {
     )
   }
 }
-const mapStateToProps = ({ user }) => ({
-  businessId: user.currentBusinessId
-})
+const mapStateToProps = ({ user }) => {
+  return {
+    businessId: user.currentBusinessId,
+    business: user.business
+  }
+}
 
 const mapDispatchToProps = {
   register

@@ -1,11 +1,13 @@
-.checkbox{
+.checkboxBusiness{
+  display: flex;
+  text-align: left;
+    white-space: nowrap;
   ul{
-    display: block;
-    text-align: left;
     border: 1px solid #E8E8E8;
     border-radius: 5px;
     list-style-type: none;
-    margin: 0 38px;
+    margin-left: 59px;
+    width: 100%;
     li{
       padding: 5px 0 5px 0;
     }

@@ -5,6 +5,8 @@ import { validPassword, isEmailValid } from '../../common/emplement/definition';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/user'
+import { openAlert } from '../../redux/actions/alert'
+import { messageTypes } from '../../common/constants';
 
 class FormLogin extends Component {
 
@@ -44,8 +46,9 @@ class FormLogin extends Component {
     const { email, password } = this.state
     if (isFormValid) {
       this.props.login({ userName: email, password }).then(res => {
-        localStorage.setItem('token', res.payload.data.token);
-        this.props.onClose()
+        const { openAlert, onClose } = this.props
+        openAlert({ messageType: messageTypes.success, message: '123123' })
+        onClose()
       })
     }
   }
@@ -79,8 +82,8 @@ class FormLogin extends Component {
               type='text'
               onChange={this.handleChange}
               value={email}
-              onKeyPress={this.handleKeyPress} 
-              placeholder='Please input your email or phone number'/>
+              onKeyPress={this.handleKeyPress}
+              placeholder='Please input your email or phone number' />
             <p className='text-error'>{emailError}</p>
           </div>
           <div className='form-group'>
@@ -91,8 +94,8 @@ class FormLogin extends Component {
               type='password'
               onChange={this.handleChange}
               value={password}
-              onKeyPress={this.handleKeyPress} 
-              placeholder='Please input your password'/>
+              onKeyPress={this.handleKeyPress}
+              placeholder='Please input your password' />
             <p className='text-error'>{passwordError}</p>
             <button type='submit' className='btn btn-primary'>Login</button>
           </div>
@@ -115,7 +118,8 @@ const mapStateToProps = ({ user }) => ({
 })
 
 const mapDispatchToProps = {
-  login
+  login,
+  openAlert
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FormLogin))

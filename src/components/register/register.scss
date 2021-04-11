@@ -1,6 +1,40 @@
 .calendar {
+  width: 100%;
   .input {
-    width: 77%;
     margin-top: 13px;
+   
+  }
+}
+.ui[className*="left icon"].input>input {
+  padding-left: 13px !important;
+  
+}
+
+.form-register {
+  padding: 25px 50px;
+  background: #f6f6f6;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  .title-page {
+    clear: both;
+    color: #0a472e !important;
+    text-align: left;
+    font-size: 20px;
+    padding: 10px 52px 15px 0 !important;
+    font-weight: bold;
+  }
+}
+.field {
+  display: flex !important;
+  label {
+    white-space: nowrap;
+    width: 200px;
+    display: inline-block !important;
+    text-align: left;
+  }
+  .selection{
+    margin-left: 4px !important;
   }
 }

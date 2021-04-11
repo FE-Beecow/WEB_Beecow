@@ -1,6 +1,5 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import UserService from "../../services/user.service";
-import { LOGIN } from "../constants";
 
 export const login = createAsyncThunk('user/login', async (payload) => {
   return await UserService.login(payload)

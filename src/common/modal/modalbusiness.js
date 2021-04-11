@@ -2,9 +2,8 @@ import React from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 import './index.scss'
 import { Form, Radio } from 'semantic-ui-react'
-import { notSelect } from '../emplement/definition'
 import { connect } from 'react-redux'
-import { getAllBusiness, setBusiness } from '../../redux/actions/user'
+import { setBusiness } from '../../redux/actions/user'
 import { withRouterInnerRef } from '../../common/HOC/routerFowardRef'
 
 class BusinessModal extends React.Component {
@@ -20,11 +19,6 @@ class BusinessModal extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.props.getAllBusiness()
-  }
-
-
   handleShow() {
     this.setState({ open: true })
   }
@@ -37,6 +31,7 @@ class BusinessModal extends React.Component {
   }
 
   handleNext() {
+    this.handleClose()
     this.props.history.push('/register')
   }
 
@@ -58,9 +53,8 @@ class BusinessModal extends React.Component {
             <Form>
               {
                 business?.map(({ id, name }) => (
-                  <Form.Field>
+                  <Form.Field key={id}>
                     <Radio
-                      key={id}
                       label={name}
                       name='radioGroup'
                       value={id}
@@ -85,7 +79,6 @@ const mapStateToProps = ({ user }) => ({
 })
 
 const mapDispatchToProps = {
-  getAllBusiness,
   setBusiness
 }
 

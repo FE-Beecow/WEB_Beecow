@@ -1,7 +1,8 @@
 import { requestApi } from './baseApi'
 
-import { getToken, checkLogin, clearToken } from '../../utils/storage';
-import { REQUEST_TIMEOUT } from '../../common/constants';
+import { getToken, checkLogin, clearToken, getCurrentUser } from '../../utils/storage';
+import { messageTypes, REQUEST_TIMEOUT } from '../../common/constants';
+//import store from '../../redux/store';
 
 export class BaseService {
   static defaultHeader = {
@@ -12,12 +13,12 @@ export class BaseService {
     'Content-Type': 'multipart/form-data'
   }
   constructor() {
-    this.loadToken()
+    //this.loadToken()
     //this.dispatch = dispatch
   }
 
   loadToken() {
-    const token = checkLogin() ? getToken() : ''
+    const token = checkLogin() ? getCurrentUser() : ''
     this.headers = {
       ...BaseService.defaultHeader,
       Authorization: `Bearer ${token}`
@@ -139,24 +140,26 @@ export class BaseService {
   //   })
   // }
 
-  // handleError(err) {
-  //   // Do something with response error
-  //   let message = i18next.t('Notification.DefaultError');
-  //   if (err.response && err.response.status === 401) {
-  //     //logout
-  //     clearToken()
-  //     this.dispatch({
-  //       user: null,
-  //       type: UserActionTypes.LOGIN,
-  //     })
-  //   } else if (err.response && err.response.data && (err.response.data.message || err.response.data.Message)) {
-  //     message = err.response.data.message || err.response.data.Message;
+  handleError(err) {
+    // Do something with response error
+    if (err.response && err.response.status === 401) {
+      //logout
+      // clearToken()
+      // this.dispatch({
+      //   user: null,
+      //   type: UserActionTypes.LOGIN,
+      // })
+    } else if (err.response && err.response.data && (err.response.data.message || err.response.data.Message)) {
+      let message = err.response.data.message || err.response.data.Message;
 
-  //     this.dispatch({
-  //       type: NotificationActionTypes.ERROR,
-  //       message: message
-  //     })
-  //   }
-  //   return Promise.reject('Error');
-  // }
+      // store.dispatch({
+      //   type: 'alert/open',
+      //   payload: {
+      //     message: message,
+      //     messageType: messageTypes.error
+      //   }
+      // })
+    }
+    return Promise.reject('Error');
+  }
 }

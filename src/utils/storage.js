@@ -1,7 +1,7 @@
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 import moment from 'moment'
 
-export const setToken = (isRemember, data) => {
+export const setCurrentUser = (isRemember, data) => {
     if (isRemember) {
         localStorage.setItem('user', JSON.stringify(data))
     }
@@ -10,13 +10,13 @@ export const setToken = (isRemember, data) => {
     }
 }
 
-export const getToken = () => {
+export const getCurrentUser = () => {
     const user = sessionStorage.getItem('user') || localStorage.getItem('user')
-    return user && JSON.parse(user).token || ''
+    return JSON.parse(user)
 }
 
 export const checkLogin = () => {
-    const token = getToken()
+    const token = getCurrentUser()
     const user = sessionStorage.getItem('user') || localStorage.getItem('user')
     const expireOn = user && JSON.parse(user).expireOn || ''
     const now = moment()

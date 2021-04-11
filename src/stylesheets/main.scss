@@ -4,3 +4,19 @@
   opacity: 0.5;
   cursor: none !important;
 }
+
+.success {
+  background-color: #f6ffed !important;
+  border: 1px solid #b7eb8f !important;
+  i {
+    margin-right: 10px;
+  }
+}
+
+.error {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  i {
+    margin-right: 10px;
+  }
+}
