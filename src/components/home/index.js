@@ -52,12 +52,12 @@ class Home extends Component {
                 </div>
                 <div className='content-header' href='# '>Tạo cửa hàng</div>
                 <div className='content-header' href='# '>SHOPING</div>
-                <div className='content-header' href='# '>
+                {/* <div className='content-header' href='# '>
                     <button class="button button1">Green</button>
                 </div>
                 <div className='content-header' href='# '>
                     <button class="button button1">Green</button>
-                </div>
+                </div> */}
                 <div className='content-header content-right' href='# '>
                     <ModalLogin
                         ref={this.loginModalRef}
