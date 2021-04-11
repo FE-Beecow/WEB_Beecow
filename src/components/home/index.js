@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import RegisterModal from '../register/modalRegister';
 import BusinessModal from '../../common/modal/modalbusiness';
 import { connect } from 'react-redux';
+import { Dropdown } from 'react-bootstrap'
 
 class Home extends Component {
     constructor(props) {
@@ -39,6 +40,19 @@ class Home extends Component {
         else{
             return <><span className='user-name' onClick={this.onLoginClick}><i className="fa fa-user-o" aria-hidden="true"></i>Sign In</span></>
         }
+        // return <><span>
+        //     <Dropdown>
+        //         <Dropdown.Toggle variant="success" id="dropdown-basic">
+        //             Dropdown Button
+        //         </Dropdown.Toggle>
+
+        //         <Dropdown.Menu>
+        //             <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+        //             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+        //             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        //         </Dropdown.Menu>
+        //     </Dropdown>
+        //     </span></>
     }
 
     render() {
@@ -72,6 +86,7 @@ class Home extends Component {
                     }
                 </div>
             </div>
+            
         )
 
 

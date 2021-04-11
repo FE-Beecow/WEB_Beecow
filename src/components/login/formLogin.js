@@ -43,7 +43,8 @@ class FormLogin extends Component {
     const isFormValid = this.validate()
     const { email, password } = this.state
     if (isFormValid) {
-      this.props.login({ userName: email, password }).then(() => {
+      this.props.login({ userName: email, password }).then(res => {
+        localStorage.setItem('token', res.payload.data.token);
         this.props.onClose()
       })
     }
