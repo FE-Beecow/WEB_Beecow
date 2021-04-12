@@ -31,11 +31,6 @@
     width: 200px;
     align-self: center;
     font-weight: bold;
-    // label {
-    //   white-space: nowrap;
-    //   display: inline-block !important;
-    //   text-align:center;
-    // }
     .start {
       margin-left: 6px;
     }
@@ -76,4 +71,9 @@
   font-weight: 500;
   margin: 0;
   text-align: center;
+}
+
+.form-login{
+  justify-content: center;
+  display: flex;
 }

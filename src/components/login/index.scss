@@ -67,20 +67,25 @@
             }
         }
     }
+    .form-login{
+        justify-content: center;
+        display: flex;
+    }
     button {
-        background-color: #a8b324;
+        background-color: #0c74dc;
         border: none;
         padding: 0.8em;
-        width: 100%;
+        width: 40%;
         color: #fff;
         font-size: 15px;
         font-family: "Montserrat", sans-serif;
         /* font-size: 12px; */
         font-weight: 700;
-        border-radius: 5px;
+        border-radius: 25px;
         cursor: pointer;
         margin: 15px 0;
         float: left;
+        display: flex; justify-content: center
     }
     button:hover {
         color: #fff;
@@ -111,3 +116,8 @@ input[type=password]::-ms-reveal,
 input[type=password]::-ms-clear {
   display: none;
 }
+
+.rows .row {
+    width: 100%;
+    margin-left: 5px;
+ }

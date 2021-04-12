@@ -218,10 +218,17 @@ class FormRegister extends Component {
           {
             this.renderCategories()
           }
-          <button type='submit' className='btn btn-primary' onClick={this.loginAction}>Register</button>
-          <p className='question'>Already registered?
-            <span className='sign-up' onClick={this.onLoginClick}>Log In</span>
-          </p>
+          <div className='rows'>
+            <div className='row form-login'>
+              <button type='submit' className='btn btn-primary' onClick={this.loginAction}>Register</button>
+            </div>
+            <div className='row'>
+              <p className='question'>Already registered?
+                <span className='sign-up' onClick={this.onLoginClick}>Log In</span>
+              </p>
+            </div>
+          </div>
+          
           <ModalLogin
               ref={this.loginModalRef}
               onLoginClick = {this.onLoginClick}

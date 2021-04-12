@@ -42,9 +42,9 @@ class FormLogin extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // const isFormValid = this.validate()
+    const isFormValid = this.validate()
     const { email, password, phoneNumber } = this.state
- 
+    if(isFormValid){
       this.props.login({ userName: email, password, phoneNumber }).then(res => {
         if(res.payload.data.status == 104){
           const emailError = 'Pasword or Email or Phone is incorrect'
@@ -56,20 +56,20 @@ class FormLogin extends Component {
           window.location.href = '/';
         }
       })
-    
+    }
   }
 
-  // validate = () => {
-  //   const { email, password, phoneNumber } = this.state
-  //   const emailError = isEmailValid(email)
-  //   const passwordError = validPassword(password)
-  //   const phoneNumberError = validNumber(phoneNumber)
-  //   this.setState({ emailError, passwordError })
-  //   if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
-  //     return false
-  //   }
-  //   return true
-  // }
+  validate = () => {
+    const { email, password, phoneNumber } = this.state
+    const emailError = isEmailValid(email)
+    const passwordError = validPassword(password)
+    const phoneNumberError = validNumber(phoneNumber)
+    this.setState({ emailError, passwordError })
+    if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
+      return false
+    }
+    return true
+  }
 
   handleClick = () => this.setState(({ type }) => ({
     type: type === 'password' ? 'text' : 'password'
@@ -78,41 +78,41 @@ class FormLogin extends Component {
   render() {
     const { email, password, phoneNumber, emailError, passwordError,phoneNumberError } = this.state
     return (
-      <div>
-        <Form className='form' name='form' onSubmit={this.handleSubmit}>
-          <div className='form-group'>
-            <label>Email address or phone number </label><span className='text-red'>*</span>
-            <input
-              id='email'
-              name='email'
-              type='text'
-              onChange={this.handleChange}
-              value={email || phoneNumber}
-              onKeyPress={this.handleKeyPress}
-              placeholder='Please input your email or phone number' />
-            <p className='text-error'>{emailError}</p>
-            <p className='text-error'>{phoneNumberError}</p>
-          </div>
-          <div className='form-group'>
-            <label>Password</label><span className='text-red'>*</span>
-            <input
-              id='password'
-              name='password'
-              type={this.state.type}
-              onChange={this.handleChange}
-              value={password}
-              onKeyPress={this.handleKeyPress}
-              placeholder='Please input your password' />
-            <span className='show-hide' onClick={this.handleClick}>{this.state.type === 'text' ? <><img src={hidePassword}/></> :  <><img src={showPassword}/></>}</span>
-            <p className='text-error'>{passwordError}</p>
-            <button type='submit' className='btn'>Login</button>
-          </div>
-          {/* <div className='form-group form-check'>
-            <input type='checkbox' className='form-check-input' id='exampleCheck1' />
-            <label className='form-check-label' for='exampleCheck1'>Check me out</label>
-          </div> */}
-        </Form>
-        <div className='fogot-pass'>Forgot password?</div>
+      <div className='rows'>
+        <div className='row'>
+          <Form className='form' name='form' onSubmit={this.handleSubmit}>
+            <div className='form-group'>
+              <label>Email address or phone number </label><span className='text-red'>*</span>
+              <input
+                id='email'
+                name='email'
+                type='text'
+                onChange={this.handleChange}
+                value={email || phoneNumber}
+                onKeyPress={this.handleKeyPress}
+                placeholder='Please input your email or phone number' />
+              <p className='text-error'>{emailError}</p>
+              <p className='text-error'>{phoneNumberError}</p>
+            </div>
+            <div className='form-group'>
+              <label>Password</label><span className='text-red'>*</span>
+              <input
+                id='password'
+                name='password'
+                type={this.state.type}
+                onChange={this.handleChange}
+                value={password}
+                onKeyPress={this.handleKeyPress}
+                placeholder='Please input your password' />
+              <span className='show-hide' onClick={this.handleClick}>{this.state.type === 'text' ? <><img src={hidePassword}/></> :  <><img src={showPassword}/></>}</span>
+              <p className='text-error'>{passwordError}</p>
+            </div>
+            <div className='form-login'>
+              <button type='submit' className='btn'>Login</button>
+            </div>
+          </Form>
+        </div>
+        <div className='row fogot-pass'>Forgot password?</div>
         <div className='question'>Don't have an account yet?
             <span className='sign-up' onClick={this.onChooseBusiness} >Register</span>
         </div>
