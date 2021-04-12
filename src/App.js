@@ -10,7 +10,7 @@ import Home from './components/home';
 import FormLogin from './components/login/formLogin';
 import LoginModal from './components/login/modalLogin';
 import FormRegister from './components/register/formRegister';
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 import Alert from './common/components/alert';
 
 export default class App extends Component {

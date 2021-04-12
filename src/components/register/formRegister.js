@@ -5,7 +5,7 @@ import CheckList from '../../common/components/checkList';
 import { shipperOpptions, genderOptions, categoriesOpptions } from '../../common/constants';
 import { connect } from 'react-redux';
 import { register } from '../../redux/actions/user'
-import { Form, Select } from 'semantic-ui-react'
+import { Form, Select, Input } from 'semantic-ui-react'
 
 class FormRegister extends Component {
   constructor(props) {
@@ -85,7 +85,8 @@ class FormRegister extends Component {
         <Form name='form' onSubmit={this.handleSubmit}>
           <Form.Field>
             <div className='title'>
-              <label>Full Name</label><span className='text-red start'>*</span>
+              {/* <label>Full Name</label><span className='text-red start'>*</span> */}
+              Full Name<span className='text-red start'>*</span>
             </div>
             <input
               id='fullName'
@@ -98,7 +99,8 @@ class FormRegister extends Component {
           <div className='text-error'></div>
           <Form.Field>
             <div className='title'>
-              <label>Email</label><span className='text-red start'>*</span>
+              {/* <label>Email</label><span className='text-red start'>*</span> */}
+              Email<span className='text-red start'>*</span>
             </div>
             <input
               id='email'
@@ -112,7 +114,8 @@ class FormRegister extends Component {
           <p className='text-error'>{emailError}</p>
           <Form.Field>
             <div className='title'>
-              <label>Phone</label><span className='text-red start'>*</span>
+              {/* <label>Phone</label><span className='text-red start'>*</span> */}
+              Phone<span className='text-red start'>*</span>
             </div>
             <input
               id='phoneNumber'
@@ -126,7 +129,8 @@ class FormRegister extends Component {
           <p className='text-error'>{phoneNumberError}</p>
           <Form.Field>
             <div className='title'>
-              <label>Password</label><span className='text-red start'>*</span>
+              {/* <label>Password</label><span className='text-red start'>*</span> */}
+              Password<span className='text-red start'>*</span>
             </div>
             <input
               id='password'
@@ -140,7 +144,8 @@ class FormRegister extends Component {
           <p className='text-error'>{passwordError}</p>
           <Form.Field>
             <div className='title'>
-              <label>Re-enter Password</label><span className='text-red start'>*</span>
+              {/* <label>Re-enter Password</label><span className='text-red start'>*</span> */}
+              Re-enter Password<span className='text-red start'>*</span>
             </div>
             <input
               id='comfirmPassword'
@@ -153,7 +158,8 @@ class FormRegister extends Component {
           <p className='text-error'>{passwordError}</p>
           <Form.Field>
             <div className='title'>
-              <label>Address</label><span className='text-red start'>*</span>
+              {/* <label>Address</label><span className='text-red start'>*</span> */}
+              Address<span className='text-red start'>*</span>
             </div>
             <input
               id='address'
@@ -181,7 +187,8 @@ class FormRegister extends Component {
           </select> */}
           <Form.Field>
             <div className='title'>
-              <label>Date of Birth</label><span className='text-red start'>*</span>
+              {/* <label>Date of Birth</label><span className='text-red start'>*</span> */}
+              Date of Birth<span className='text-red start'>*</span>
             </div>
             <div className="ui calendar" id="example1">
               <div className="ui input left icon">

@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import RegisterModal from '../register/modalRegister';
 import BusinessModal from '../../common/modal/modalbusiness';
 import { connect } from 'react-redux';
-import { Nav, NavLink, Bars, NavMenu, NavBtn } from './navbarElements';
+import { Nav, NavLink, Bars, NavMenu, NavBtn } from './NavbarElements';
 // import { DropdownButton, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -85,7 +85,7 @@ class Navbar extends Component {
     }
     else {
       return <>
-        <span className='user-name' onClick={this.onLoginClick} style={{ color: 'white' }}><i className="fa fa-user-o" aria-hidden="true"></i>Sign In</span></>
+        <Button primary className='user-name' onClick={this.onLoginClick} style={{ color: 'white' }}><i className="fa fa-user-o" aria-hidden="true"></i><a style={{marginLeft: '10px'}}>Register/Login</a></Button ></>
     }
   }
 

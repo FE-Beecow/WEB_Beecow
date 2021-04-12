@@ -30,11 +30,13 @@
   display: flex !important;
   .title{
     width: 200px;
-    label {
-      white-space: nowrap;
-      display: inline-block !important;
-      text-align: left;
-    }
+    align-self: center;
+    font-weight: bold;
+    // label {
+    //   white-space: nowrap;
+    //   display: inline-block !important;
+    //   text-align:center;
+    // }
     .start{
       margin-left: 6px;
     }
