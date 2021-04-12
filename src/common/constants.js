@@ -1,15 +1,19 @@
 export const REQUEST_TIMEOUT = 30000
 export const businessOpptions = ['farmer', 'buyer', 'shipper'];
-export const categoriesOpptions = ['vegetable', 'fruit', 'seafood', 'dried food']
+export const categoriesOpptions = [
+  { text: 'Vegetable', value: 0 },
+  { text: 'Fruit', value: 1 },
+  { text: 'Seafood', value: 2 },
+  { text: 'Dried food', value: 3 }
+  ]
 export const shipperOpptions = [
   { text: 'Bus Services', value: 0 },
   { text: 'Fast Delivery Services', value: 1 },
   { text: 'Inner City Ship', value: 2 }
 ]
 export const genderOptions = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
+  { key: 'm', text: 'Male', value: true },
+  { key: 'f', text: 'Female', value: false }
 ]
 
 export const userOptions = [

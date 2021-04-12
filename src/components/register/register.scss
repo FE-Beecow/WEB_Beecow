@@ -28,13 +28,27 @@
 }
 .field {
   display: flex !important;
-  label {
-    white-space: nowrap;
+  .title{
     width: 200px;
-    display: inline-block !important;
-    text-align: left;
+    label {
+      white-space: nowrap;
+      display: inline-block !important;
+      text-align: left;
+    }
+    .start{
+      margin-left: 6px;
+    }
+    .selection{
+      margin-left: 4px !important;
+    }
   }
-  .selection{
-    margin-left: 4px !important;
-  }
+
+
+}
+.text-error {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
 }

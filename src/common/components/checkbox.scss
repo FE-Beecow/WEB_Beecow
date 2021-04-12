@@ -1,15 +1,24 @@
-.checkboxBusiness{
+.checkboxBusiness {
   display: flex;
   text-align: left;
-    white-space: nowrap;
-  ul{
-    border: 1px solid #E8E8E8;
+  white-space: nowrap;
+  ul {
+    border: 1px solid #e8e8e8;
     border-radius: 5px;
     list-style-type: none;
     margin-left: 59px;
     width: 100%;
-    li{
+    li {
       padding: 5px 0 5px 0;
+    }
+    .title-type {
+      margin: 0 0 0.28571429rem 0;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 0.92857143em;
+      font-weight: 700;
+    }
+    span.start{
+      margin-left: 6px;
     }
   }
 }

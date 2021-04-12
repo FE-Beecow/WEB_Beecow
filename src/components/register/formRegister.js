@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './register.scss';
 import { validPassword, isEmailValid, validNumber } from '../../common/emplement/definition';
 import CheckList from '../../common/components/checkList';
-import { shipperOpptions, genderOptions } from '../../common/constants';
+import { shipperOpptions, genderOptions, categoriesOpptions } from '../../common/constants';
 import { connect } from 'react-redux';
 import { register } from '../../redux/actions/user'
 import { Form, Select } from 'semantic-ui-react'
@@ -66,22 +66,27 @@ class FormRegister extends Component {
 
   renderCategories() {
     const { businessId, business } = this.props
+    if (!businessId) {
+      window.location.href = '/';
+    }
     const { name } = business.find((b) => b.id === businessId)
     if (name === 'Shipper') {
       return <><CheckList name='Shipping Type' options={shipperOpptions} /></>
     } else if (name === 'Farmer') {
-      return <><CheckList name='Categories' options={shipperOpptions} /></>
+      return <><CheckList name='Categories' options={categoriesOpptions} /></>
     }
   }
 
   render() {
     const { email, address, password, emailError, phoneNumberError, passwordError, comfirmPassword, phoneNumber, fullName } = this.state
     return (
-      <div className='form-register  col-md-5 offset-md-3'>
+      <div className='form-register  col-md-5 offset-md-4'>
         <p className='title-page'>Register</p>
         <Form name='form' onSubmit={this.handleSubmit}>
           <Form.Field>
-            <label>Full Name</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Full Name</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='fullName'
               name='fullName'
@@ -89,10 +94,12 @@ class FormRegister extends Component {
               value={fullName}
               onChange={this.handleChange}
               placeholder='Full name...' />
-            <div className='text-error'></div>
           </Form.Field>
+          <div className='text-error'></div>
           <Form.Field>
-            <label>Email</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Email</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='email'
               name='email'
@@ -101,10 +108,12 @@ class FormRegister extends Component {
               value={email, phoneNumber}
               onKeyPress={this.handleKeyPress}
               placeholder='Email' />
-            <p className='text-error'>{emailError}</p>
           </Form.Field>
+          <p className='text-error'>{emailError}</p>
           <Form.Field>
-            <label>Phone</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Phone</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='phoneNumber'
               name='phone'
@@ -113,11 +122,12 @@ class FormRegister extends Component {
               value={phoneNumber}
               onKeyPress={this.handleKeyPress}
               placeholder='Phone number' />
-            <br />
-            <p className='text-error'>{phoneNumberError}</p>
           </Form.Field>
+          <p className='text-error'>{phoneNumberError}</p>
           <Form.Field>
-            <label>Password</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Password</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='password'
               name='password'
@@ -126,10 +136,12 @@ class FormRegister extends Component {
               value={password}
               onKeyPress={this.handleKeyPress}
               placeholder='Password' />
-            <p className='text-error'>{passwordError}</p>
           </Form.Field>
+          <p className='text-error'>{passwordError}</p>
           <Form.Field>
-            <label>Re-enter Password</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Re-enter Password</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='comfirmPassword'
               name='comfirmPassword'
@@ -137,10 +149,12 @@ class FormRegister extends Component {
               value={comfirmPassword}
               onChange={this.handleChange}
               placeholder='Comfirm Password' />
-            <p className='text-error'>{passwordError}</p>
           </Form.Field>
+          <p className='text-error'>{passwordError}</p>
           <Form.Field>
-            <label>Address</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Address</label><span className='text-red start'>*</span>
+            </div>
             <input
               id='address'
               name='address'
@@ -157,8 +171,18 @@ class FormRegister extends Component {
             search
             searchInput={{ id: 'form-select-control-gender' }}
           />
+          {/* <label>Gender</label>
+          <select className="select">
+            {
+              genderOptions?.map((e) => {
+                <option key={e.key} value={e.value}>{e.text}</option>
+              })
+            }
+          </select> */}
           <Form.Field>
-            <label>Date of Birth</label><span className='text-red'>*</span>
+            <div className='title'>
+              <label>Date of Birth</label><span className='text-red start'>*</span>
+            </div>
             <div className="ui calendar" id="example1">
               <div className="ui input left icon">
                 {/* <i className="calendar icon"></i> */}

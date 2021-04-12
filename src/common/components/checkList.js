@@ -10,7 +10,7 @@ export default class CheckList extends React.Component {
     const { name, options } = this.props
     return (
       <div className='checkboxBusiness'>
-        <p>{name}</p>
+        <p className='title-type'>{name}</p><span className='text-red start'>*</span>
         <ul>
           {options?.map((e, i) => <li key={i}><Form.Checkbox label={e.text} value={e.value} /></li>)}
         </ul>

@@ -151,7 +151,7 @@ export class BaseService {
       // })
     } else if (err.response && err.response.data && (err.response.data.message || err.response.data.Message)) {
       let message = err.response.data.message || err.response.data.Message;
-
+      alert(message)
       // store.dispatch({
       //   type: 'alert/open',
       //   payload: {
