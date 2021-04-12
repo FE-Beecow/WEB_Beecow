@@ -9,7 +9,6 @@ import { openAlert } from '../../redux/actions/alert'
 import { messageTypes } from '../../common/constants';
 import hidePassword from '../../assets/images/hide-eye.png'
 import showPassword from '../../assets/images/show_password.png'
-import * as ErrorMessages from '../../common/emplement/errorMessages.js';
 
 class FormLogin extends Component {
 
@@ -54,6 +53,7 @@ class FormLogin extends Component {
           const { openAlert, onClose } = this.props
           openAlert({ messageType: messageTypes.success, message: '123123' })
           onClose()
+          window.location.href = '/';
         }
       })
     
@@ -114,7 +114,7 @@ class FormLogin extends Component {
         </Form>
         <div className='fogot-pass'>Forgot password?</div>
         <div className='question'>Don't have an account yet?
-            <span className='sign-up' onClick={this.onChooseBusiness} >Sign up</span>
+            <span className='sign-up' onClick={this.onChooseBusiness} >Register</span>
         </div>
       </div>
     )

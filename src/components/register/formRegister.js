@@ -46,7 +46,20 @@ class FormRegister extends Component {
     const { email, password, fullName, phone, address } = this.state
     const { businessId } = this.props
     if (isFormValid) {
-      this.props.register({ email, password, fullName, phone, address, businessId })
+      this.props.register({ email, password, fullName, phone, address, businessId }).then(res => {
+        console.log('res')
+        console.log(res)
+        if(res.payload.data.status == '999'){
+          const emailError = res.payload.data.message
+          this.setState({ emailError})
+        }
+        if(res.payload.data.status == '998'){
+          const phoneNumberError = res.payload.data.message
+          this.setState({ phoneNumberError})
+        }else{
+          window.location.href = '/';
+        }
+      })
     }
   }
 
@@ -108,7 +121,7 @@ class FormRegister extends Component {
               onChange={this.handleChange}
               placeholder='Full name...' />
           </Form.Field>
-          <div className='text-error'></div>
+          <p className='text-error'></p>
           <Form.Field>
             <div className='title'>
               {/* <label>Email</label><span className='text-red start'>*</span> */}
@@ -183,12 +196,12 @@ class FormRegister extends Component {
               onChange={this.handleChange}
               placeholder='Address' />
           </Form.Field>
+          <p className='text-error'></p>
           <Form.Field>
             <div className='title'> Gender<span className='text-red start'>*</span>
             </div>
             <Select placeholder='Gender' options={genderOptions} />
           </Form.Field>
-
           <Form.Field>
             <div className='title'>
               {/* <label>Date of Birth</label><span className='text-red start'>*</span> */}
@@ -201,6 +214,7 @@ class FormRegister extends Component {
               </div>
             </div>
           </Form.Field>
+          <p className='text-error'></p>
           {
             this.renderCategories()
           }
