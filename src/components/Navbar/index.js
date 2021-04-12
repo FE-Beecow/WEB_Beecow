@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import './index.scss'
-import logo from '../../assets/images/logo.jpg'
+import logo from '../../assets/images/logo.png'
 import ModalLogin from '../login/modalLogin'
 import { withRouter } from 'react-router';
 import RegisterModal from '../register/modalRegister';

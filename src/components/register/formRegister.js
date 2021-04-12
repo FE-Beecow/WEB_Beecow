@@ -176,7 +176,7 @@ class FormRegister extends Component {
             <input
               id='comfirmPassword'
               name='comfirmPassword'
-              type={this.state.type}
+              type={this.state.typePasswordCF}
               value={comfirmPassword}
               onChange={this.handleChange}
               placeholder='Comfirm Password' />
