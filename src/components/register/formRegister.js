@@ -6,6 +6,8 @@ import { shipperOpptions, genderOptions, categoriesOpptions } from '../../common
 import { connect } from 'react-redux';
 import { register } from '../../redux/actions/user'
 import { Form, Select, Input } from 'semantic-ui-react'
+import hidePassword from '../../assets/images/hide-eye.png'
+import showPassword from '../../assets/images/show_password.png'
 
 class FormRegister extends Component {
   constructor(props) {
@@ -13,16 +15,21 @@ class FormRegister extends Component {
     this.state = {
       fullName: '',
       password: '',
-      email: '',
+      userName: '',
       address: '',
       comfirmPassword: '',
       emailError: null,
       passwordError: null,
       phoneNumberError: null,
       validationErrors: {},
-      phone: ''
+      phone: '',
+      isShow: false,
+      type: 'password',
+      typePasswordCF : 'password'
     }
     this.handleLogin = this.handleLogin.bind(this)
+    this.clickShowPassword = this.clickShowPassword.bind(this)
+    this.clickShowPasswordComfirm = this.clickShowPasswordComfirm.bind(this)
   }
 
   handleChange = (e) => {
@@ -43,10 +50,10 @@ class FormRegister extends Component {
   }
 
   validate = () => {
-    const { email, password, phoneNumber } = this.state
+    const { email, password, phone } = this.state
     const emailError = isEmailValid(email)
     const passwordError = validPassword(password)
-    const phoneNumberError = validNumber(phoneNumber)
+    const phoneNumberError = validNumber(phone)
     this.setState({ emailError, passwordError })
     if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
       return false
@@ -76,9 +83,15 @@ class FormRegister extends Component {
       return <><CheckList name='Categories' options={categoriesOpptions} /></>
     }
   }
+  clickShowPassword = () => this.setState(({ type}) => ({
+    type: type === 'password' ? 'text' : 'password',
+  }))
+  clickShowPasswordComfirm = () => this.setState(({ typeCf}) => ({
+    typePasswordCF: typeCf === 'password' ? 'text' : 'password'
+  }))
 
   render() {
-    const { email, address, password, emailError, phoneNumberError, passwordError, comfirmPassword, phoneNumber, fullName } = this.state
+    const { email, address, password, emailError, phoneNumberError, passwordError, comfirmPassword, phone, fullName } = this.state
     return (
       <div className='form-register  col-md-5 offset-md-4'>
         <p className='title-page'>Register</p>
@@ -107,7 +120,7 @@ class FormRegister extends Component {
               name='email'
               type='text'
               onChange={this.handleChange}
-              value={email, phoneNumber}
+              value={email}
               onKeyPress={this.handleKeyPress}
               placeholder='Email' />
           </Form.Field>
@@ -122,7 +135,7 @@ class FormRegister extends Component {
               name='phone'
               type='number'
               onChange={this.handleChange}
-              value={phoneNumber}
+              value={phone}
               onKeyPress={this.handleKeyPress}
               placeholder='Phone number' />
           </Form.Field>
@@ -135,11 +148,12 @@ class FormRegister extends Component {
             <input
               id='password'
               name='password'
-              type='password'
+              type={this.state.type}
               onChange={this.handleChange}
               value={password}
               onKeyPress={this.handleKeyPress}
               placeholder='Password' />
+               <span className='show-hide' onClick={this.clickShowPassword}>{this.state.type === 'text' ? <><img src={hidePassword}/></> :  <><img src={showPassword}/></>}</span>
           </Form.Field>
           <p className='text-error'>{passwordError}</p>
           <Form.Field>
@@ -150,10 +164,11 @@ class FormRegister extends Component {
             <input
               id='comfirmPassword'
               name='comfirmPassword'
-              type='password'
+              type={this.state.type}
               value={comfirmPassword}
               onChange={this.handleChange}
               placeholder='Comfirm Password' />
+               <span className='show-hide-comfirm' onClick={this.clickShowPasswordComfirm}>{this.state.typePasswordCF === 'text' ? <><img src={hidePassword}/></> :  <><img src={showPassword}/></>}</span>
           </Form.Field>
           <p className='text-error'>{passwordError}</p>
           <Form.Field>
@@ -169,22 +184,12 @@ class FormRegister extends Component {
               onChange={this.handleChange}
               placeholder='Address' />
           </Form.Field>
-          <Form.Field
-            control={Select}
-            options={genderOptions}
-            label={{ children: 'Gender', htmlFor: 'form-select-control-gender' }}
-            placeholder='Gender'
-            search
-            searchInput={{ id: 'form-select-control-gender' }}
-          />
-          {/* <label>Gender</label>
-          <select className="select">
-            {
-              genderOptions?.map((e) => {
-                <option key={e.key} value={e.value}>{e.text}</option>
-              })
-            }
-          </select> */}
+          <Form.Field>
+            <div className='title'> Gender<span className='text-red start'>*</span>
+            </div>
+            <Select placeholder='Gender' options={genderOptions} />
+          </Form.Field>
+
           <Form.Field>
             <div className='title'>
               {/* <label>Date of Birth</label><span className='text-red start'>*</span> */}

@@ -43,9 +43,9 @@ class FormLogin extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const isFormValid = this.validate()
+    // const isFormValid = this.validate()
     const { email, password, phoneNumber } = this.state
-    if (isFormValid) {
+ 
       this.props.login({ userName: email, password, phoneNumber }).then(res => {
         if(res.payload.data.status == 104){
           const emailError = 'Pasword or Email or Phone is incorrect'
@@ -56,20 +56,20 @@ class FormLogin extends Component {
           onClose()
         }
       })
-    }
+    
   }
 
-  validate = () => {
-    const { email, password, phoneNumber } = this.state
-    const emailError = isEmailValid(email)
-    const passwordError = validPassword(password)
-    const phoneNumberError = validNumber(phoneNumber)
-    this.setState({ emailError, passwordError })
-    if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
-      return false
-    }
-    return true
-  }
+  // validate = () => {
+  //   const { email, password, phoneNumber } = this.state
+  //   const emailError = isEmailValid(email)
+  //   const passwordError = validPassword(password)
+  //   const phoneNumberError = validNumber(phoneNumber)
+  //   this.setState({ emailError, passwordError })
+  //   if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
+  //     return false
+  //   }
+  //   return true
+  // }
 
   handleClick = () => this.setState(({ type }) => ({
     type: type === 'password' ? 'text' : 'password'

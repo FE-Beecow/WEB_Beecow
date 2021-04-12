@@ -23,3 +23,16 @@
 .text-red{
   color: red;
 }
+button:hover {
+  color: #fff;
+  background-color: #80891b;
+  border-color: #80891b;
+}
+.show-hide {
+  position: absolute;
+  right: 10%;
+  top: 52%;
+  img{
+      width: 20px;
+  }
+}

@@ -1,13 +1,12 @@
 .calendar {
   width: 100%;
+  margin-left: -5px;
   .input {
     margin-top: 13px;
-   
   }
 }
-.ui[className*="left icon"].input>input {
+.ui[className*="left icon"].input > input {
   padding-left: 13px !important;
-  
 }
 
 .form-register {
@@ -28,7 +27,7 @@
 }
 .field {
   display: flex !important;
-  .title{
+  .title {
     width: 200px;
     align-self: center;
     font-weight: bold;
@@ -37,15 +36,39 @@
     //   display: inline-block !important;
     //   text-align:center;
     // }
-    .start{
+    .start {
       margin-left: 6px;
     }
-    .selection{
+    .selection {
       margin-left: 4px !important;
     }
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .show-hide {
+    position: absolute;
+    right: 10%;
+    top: 23%;
+    img{
+        width: 20px;
+    }
+}
+.show-hide-comfirm{
+  position: absolute;
+  right: 10%;
+  top: 31%;
+  img{
+      width: 20px;
+  }
+}
 }
 .text-error {
   color: red;
