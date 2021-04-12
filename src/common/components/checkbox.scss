@@ -2,6 +2,9 @@
   display: flex;
   text-align: left;
   white-space: nowrap;
+  p{
+    font-weight: bold;
+  }
   ul {
     border: 1px solid #e8e8e8;
     border-radius: 5px;
