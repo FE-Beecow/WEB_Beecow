@@ -5,6 +5,11 @@
     }
     .content{
         padding: 0 52px !important;
+        .form-chooseBusiness{
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
     }
     .header {
         border-bottom: none !important;
@@ -24,6 +29,7 @@
     border-color: green;
 }
 .field {
+    margin: 0 !important;
     text-transform: capitalize !important;
     .radio {
         label {
@@ -31,10 +37,12 @@
         }
     }
 }
-.continute {
-    background: green;
-    color: #fff;
-    border: none;
-    width: 32%;
-    padding: 15px;
+.action{
+    .continute {
+        border: none;
+        float: right;
+    }
+    .btn-back{
+        float: left;
+    }
 }

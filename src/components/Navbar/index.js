@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import RegisterModal from '../register/modalRegister';
 import BusinessModal from '../../common/modal/modalbusiness';
 import { connect } from 'react-redux';
-import { Nav, NavLink, Bars, NavMenu, NavBtn } from './NavbarElements';
+import { Nav, NavLink, Bars, NavMenu, NavBtn } from './navbarElements';
 // import { DropdownButton, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -128,6 +128,7 @@ class Navbar extends Component {
             />
             <BusinessModal
               ref={this.chooseBusinessRef}
+              onLoginClick = {this.onLoginClick}
             />
             {
               this.renderUser()

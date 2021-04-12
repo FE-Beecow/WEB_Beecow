@@ -12,6 +12,7 @@ class BusinessModal extends React.Component {
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleNext = this.handleNext.bind(this)
+    this.backToPage = this.backToPage.bind(this)
     this.state = {
       open: false,
       business: null,
@@ -35,10 +36,14 @@ class BusinessModal extends React.Component {
     this.props.history.push('/register')
   }
 
+  backToPage() {
+    this.handleClose()
+    this.props.onLoginClick()
+  }
   render() {
     const { open, businessId } = this.state
     const { business } = this.props
-    const buttonClass = `continute ${businessId ? '' : 'disable'}`
+    // const buttonClass = `continute ${businessId ? '' : 'disable'}`
     return (
       <div className='modal-login'>
         <Modal
@@ -50,7 +55,7 @@ class BusinessModal extends React.Component {
         >
           <Header content='Choose your business' />
           <Modal.Content>
-            <Form>
+            <Form className='form-chooseBusiness'>
               {
                 business?.map(({ id, name }) => (
                   <Form.Field key={id}>
@@ -64,9 +69,11 @@ class BusinessModal extends React.Component {
                   </Form.Field>
                 ))
               }
-              <p>{this.state.textError}</p>
-              <button className={buttonClass} onClick={this.handleNext}>Continute</button>
             </Form>
+            <div className='action'>
+              <button className='btn-back col-md-4 ' onClick={this.backToPage}>Back</button>
+              <button className={this.state.businessId ? 'continute col-md-4 offset-md-4 ' : 'disable col-md-4 offset-md-4'}  onClick={this.handleNext}>Continue</button>
+            </div>
           </Modal.Content>
         </Modal>
       </div>

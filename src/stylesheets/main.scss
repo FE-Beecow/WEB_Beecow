@@ -28,11 +28,18 @@ button:hover {
   background-color: #80891b;
   border-color: #80891b;
 }
-.show-hide {
-  position: absolute;
-  right: 10%;
-  top: 52%;
-  img{
-      width: 20px;
-  }
+button {
+  background-color: #a8b324;
+  border: none;
+  padding: 0.8em;
+  width: 100%;
+  color: #fff;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  /* font-size: 12px; */
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px 0;
+  float: left;
 }
