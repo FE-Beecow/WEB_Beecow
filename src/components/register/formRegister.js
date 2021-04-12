@@ -8,7 +8,7 @@ import { register } from '../../redux/actions/user'
 import { Form, Select, Input } from 'semantic-ui-react'
 import hidePassword from '../../assets/images/hide-eye.png'
 import showPassword from '../../assets/images/show_password.png'
-
+import ModalLogin from '../login/modalLogin'
 class FormRegister extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +27,8 @@ class FormRegister extends Component {
       type: 'password',
       typePasswordCF : 'password'
     }
-    this.handleLogin = this.handleLogin.bind(this)
+    this.loginModalRef = React.createRef();
+    this.onLoginClick = this.onLoginClick.bind(this)
     this.clickShowPassword = this.clickShowPassword.bind(this)
     this.clickShowPasswordComfirm = this.clickShowPasswordComfirm.bind(this)
   }
@@ -65,10 +66,8 @@ class FormRegister extends Component {
     this.props.history.push('/home')
   }
 
-  handleLogin() {
-    const { openLogin, onClose } = this.props
-    onClose()
-    openLogin()
+  onLoginClick() {
+    this.loginModalRef.current.handleShow()
   }
 
   renderCategories() {
@@ -207,8 +206,12 @@ class FormRegister extends Component {
           }
           <button type='submit' className='btn btn-primary' onClick={this.loginAction}>Register</button>
           <p className='question'>Already registered?
-            <span className='sign-up' onClick={this.handleLogin}>Log In</span>
+            <span className='sign-up' onClick={this.onLoginClick}>Log In</span>
           </p>
+          <ModalLogin
+              ref={this.loginModalRef}
+              onLoginClick = {this.onLoginClick}
+            />
         </Form>
       </div>
     )
