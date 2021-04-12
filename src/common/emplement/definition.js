@@ -40,9 +40,14 @@ export const notSelect = (val) => {
 
 export const isEmailValid = (input) => {
   const typeEmail = /\S+@\S+\.\S+/;
+  const typeNumber = /[0-9]/;
   if (typeEmail.test(input)) {
     return null;
-  } else {
+  }
+  if (typeNumber.test(input) && input.length == 10) {
+    return null;
+  }
+  else {
     return ErrorMessages.isEmail(input);
   }
 };

@@ -66,7 +66,8 @@ class Navbar extends Component {
   renderUser() {
     const user = getCurrentUser()
     if (user) {
-      return <> <span className='user-name'>
+      if(!user.status){
+        return <> <span className='user-name'>
         <Dropdown
           text={user.email}
           icon='user'
@@ -82,6 +83,11 @@ class Navbar extends Component {
           </Dropdown.Menu>
         </Dropdown>
       </span></>
+      }else {
+        return <>
+          <Button primary className='user-name' onClick={this.onLoginClick} style={{ color: 'white' }}><i className="fa fa-user-o" aria-hidden="true"></i><a style={{marginLeft: '10px'}}>Register/Login</a></Button ></>
+      }
+      
     }
     else {
       return <>

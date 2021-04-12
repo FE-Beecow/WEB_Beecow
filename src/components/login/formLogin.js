@@ -9,6 +9,7 @@ import { openAlert } from '../../redux/actions/alert'
 import { messageTypes } from '../../common/constants';
 import hidePassword from '../../assets/images/hide-eye.png'
 import showPassword from '../../assets/images/show_password.png'
+import * as ErrorMessages from '../../common/emplement/errorMessages.js';
 
 class FormLogin extends Component {
 
@@ -46,9 +47,14 @@ class FormLogin extends Component {
     const { email, password, phoneNumber } = this.state
     if (isFormValid) {
       this.props.login({ userName: email, password, phoneNumber }).then(res => {
-        const { openAlert, onClose } = this.props
-        openAlert({ messageType: messageTypes.success, message: '123123' })
-        onClose()
+        if(res.payload.data.status == 104){
+          const emailError = 'Pasword or Email or Phone is incorrect'
+          this.setState({ emailError})
+        }else{
+          const { openAlert, onClose } = this.props
+          openAlert({ messageType: messageTypes.success, message: '123123' })
+          onClose()
+        }
       })
     }
   }

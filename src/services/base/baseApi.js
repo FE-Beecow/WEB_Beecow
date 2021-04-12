@@ -1,3 +1,3 @@
 import axios from 'axios'
 
-export const requestApi = axios.create({baseURL: 'http://localhost:5001/api'})
+export const requestApi = axios.create({baseURL: 'http://10.10.10.206:5001/api'})
