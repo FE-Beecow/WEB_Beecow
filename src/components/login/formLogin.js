@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import './index.scss'
 import Form from "react-bootstrap/Form";
-import { validPassword, isEmailValid } from '../../common/emplement/definition';
+import { validPassword, isEmailValid, validNumber} from '../../common/emplement/definition';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/user'
 import { openAlert } from '../../redux/actions/alert'
 import { messageTypes } from '../../common/constants';
+import hidePassword from '../../assets/images/hide-eye.png'
+import showPassword from '../../assets/images/show_password.png'
 
 class FormLogin extends Component {
 
   constructor(props) {
     super(props)
     this.onChooseBusiness = this.onChooseBusiness.bind(this)
-    //this.goToRegister = this.goToRegister.bind(this)
+    this.handleClick = this.handleClick.bind(this)
     this.state = {
       emailError: null,
       passwordError: null,
+      phoneNumberError: null,
       password: '',
       email: '',
+      phoneNumber: '',
       validationErrors: {},
-      isOpen: false
+      isOpen: false,
+      type: 'password',
 
     }
   }
-
-  // goToRegister() {
-  //   this.props.onClose()
-  //   this.props.goToRegister()
-  // }
   onChooseBusiness() {
     this.props.onClose()
     this.props.onChooseBusiness()
@@ -43,9 +43,9 @@ class FormLogin extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const isFormValid = this.validate()
-    const { email, password } = this.state
+    const { email, password, phoneNumber } = this.state
     if (isFormValid) {
-      this.props.login({ userName: email, password }).then(res => {
+      this.props.login({ userName: email, password, phoneNumber }).then(res => {
         const { openAlert, onClose } = this.props
         openAlert({ messageType: messageTypes.success, message: '123123' })
         onClose()
@@ -54,23 +54,23 @@ class FormLogin extends Component {
   }
 
   validate = () => {
-    const { email, password } = this.state
+    const { email, password, phoneNumber } = this.state
     const emailError = isEmailValid(email)
     const passwordError = validPassword(password)
+    const phoneNumberError = validNumber(phoneNumber)
     this.setState({ emailError, passwordError })
-    if (!!emailError?.length || !!passwordError?.length) {
+    if (!!emailError?.length || !!passwordError?.length || !!phoneNumberError?.length) {
       return false
     }
     return true
   }
 
-  // go to home page
-  goToHomePage() {
-    //this.props.history.push('/home')
-  }
+  handleClick = () => this.setState(({ type }) => ({
+    type: type === 'password' ? 'text' : 'password'
+  }))
 
   render() {
-    const { email, password, emailError, passwordError } = this.state
+    const { email, password, phoneNumber, emailError, passwordError,phoneNumberError } = this.state
     return (
       <div>
         <Form className='form' name='form' onSubmit={this.handleSubmit}>
@@ -81,23 +81,25 @@ class FormLogin extends Component {
               name='email'
               type='text'
               onChange={this.handleChange}
-              value={email}
+              value={email || phoneNumber}
               onKeyPress={this.handleKeyPress}
               placeholder='Please input your email or phone number' />
             <p className='text-error'>{emailError}</p>
+            <p className='text-error'>{phoneNumberError}</p>
           </div>
           <div className='form-group'>
             <label>Password</label><span className='text-red'>*</span>
             <input
               id='password'
               name='password'
-              type='password'
+              type={this.state.type}
               onChange={this.handleChange}
               value={password}
               onKeyPress={this.handleKeyPress}
               placeholder='Please input your password' />
+            <span className='show-hide' onClick={this.handleClick}>{this.state.type === 'text' ? <><img src={hidePassword}/></> :  <><img src={showPassword}/></>}</span>
             <p className='text-error'>{passwordError}</p>
-            <button type='submit' className='btn btn-primary'>Login</button>
+            <button type='submit' className='btn'>Login</button>
           </div>
           {/* <div className='form-group form-check'>
             <input type='checkbox' className='form-check-input' id='exampleCheck1' />

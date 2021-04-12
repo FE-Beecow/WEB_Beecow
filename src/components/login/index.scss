@@ -30,10 +30,11 @@
 .form {
     font-size: 14px;
     .form-group {
+        position: relative;
         input {
             padding: 10px 40px 10px 7px;
-            border: 1px solid;
-            color: #ddd;
+            border: 1px solid #ddd;
+            color: #000000;
             border-radius: 5px;
             margin: 10px 0;
             width: 100%;
@@ -43,7 +44,9 @@
             -webkit-appearance: none;
             margin: 0;
         }
-   
+        input:active {
+            border: 1px solid #a8b324;
+        }
         .text-red {
             color: red;
             margin-left: 5px;
@@ -53,6 +56,15 @@
             font-size: 14px;
             font-weight: 500;
             margin: 0;
+           
+        }
+        .show-hide {
+            position: absolute;
+            right: 10%;
+            top: 52%;
+            img{
+                width: 20px;
+            }
         }
     }
     button {
@@ -70,7 +82,7 @@
         margin: 15px 0;
         float: left;
     }
-    .btn-primary:hover {
+    button:hover {
         color: #fff;
         background-color: #80891b;
         border-color: #80891b;
@@ -84,12 +96,13 @@
     font-size: 14px;
     margin: 10px 0 35px 0;
     .sign-up {
-        color: #32cd32;
+        color: #a8b324;
+        font-size: 14px;
         cursor: pointer;
         margin-left: 5px;
     }
     .sign-up:hover {
-        color: green;
+        color: #80891b;
         font-weight: bold;
         text-decoration: underline;
     }
