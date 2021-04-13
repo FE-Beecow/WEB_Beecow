@@ -94,7 +94,45 @@ class FormRegister extends Component {
     } else if (name === 'Farmer') {
       return <><CheckList name='Categories' options={categoriesOpptions} /></>
     }
+    else{
+      return <>
+              <Form.Field>
+                <div className='title'> Gender<span className='text-red start'>*</span>
+                </div>
+                <Select placeholder='Gender' options={genderOptions} />
+              </Form.Field>
+              <Form.Field>
+                <div className='title'>
+                  {/* <label>Date of Birth</label><span className='text-red start'>*</span> */}
+                  Date of Birth<span className='text-red start'>*</span>
+                </div>
+                <div className="ui calendar" id="example1">
+                  <div className="ui input left icon">
+                    {/* <i className="calendar icon"></i> */}
+                    <input type="date" name='dob' placeholder="Date of Birth" />
+                  </div>
+                </div>
+              </Form.Field>
+            </>
+    }
   }
+
+  name_form_register() {
+    const { businessId, business } = this.props
+    if (!businessId) {
+      window.location.href = '/';
+    }
+    const { name } = business.find((b) => b.id === businessId)
+    if (name === 'Shipper') {
+      return <><p className='title-page'>Shipper Registration form</p></>
+    } else if (name === 'Farmer') {
+      return <><p className='title-page'>Farmer Registration form</p></>
+    }
+    else{
+      return <><p className='title-page'>Buyer Registration form</p></>
+    }
+  }
+
   clickShowPassword = () => this.setState(({ type}) => ({
     type: type === 'password' ? 'text' : 'password',
   }))
@@ -106,7 +144,7 @@ class FormRegister extends Component {
     const { email, address, password, emailError, phoneNumberError, passwordError, comfirmPassword, phone, fullName } = this.state
     return (
       <div className='form-register  col-md-5 offset-md-4'>
-        <p className='title-page'>Register</p>
+        {this.name_form_register()}
         <Form name='form' onSubmit={this.handleSubmit}>
           <Form.Field>
             <div className='title'>
@@ -195,24 +233,6 @@ class FormRegister extends Component {
               value={address}
               onChange={this.handleChange}
               placeholder='Address' />
-          </Form.Field>
-          <p className='text-error'></p>
-          <Form.Field>
-            <div className='title'> Gender<span className='text-red start'>*</span>
-            </div>
-            <Select placeholder='Gender' options={genderOptions} />
-          </Form.Field>
-          <Form.Field>
-            <div className='title'>
-              {/* <label>Date of Birth</label><span className='text-red start'>*</span> */}
-              Date of Birth<span className='text-red start'>*</span>
-            </div>
-            <div className="ui calendar" id="example1">
-              <div className="ui input left icon">
-                {/* <i className="calendar icon"></i> */}
-                <input type="date" name='dob' placeholder="Date of Birth" />
-              </div>
-            </div>
           </Form.Field>
           <p className='text-error'></p>
           {
