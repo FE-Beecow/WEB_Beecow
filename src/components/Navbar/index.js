@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import RegisterModal from '../register/modalRegister';
 import BusinessModal from '../../common/modal/modalbusiness';
 import { connect } from 'react-redux';
-import { Nav, NavLink, Bars, NavMenu, NavBtn } from './navbarElements';
+import { Nav, NavLink, Bars, NavMenu, NavBtn } from './NavbarElements';
 // import { DropdownButton, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
