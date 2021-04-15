@@ -1,5 +1,5 @@
-@import "variable";
-
+@import "./_variable";
+@import './components';
 .disable {
   opacity: 0.5;
   cursor: none !important;

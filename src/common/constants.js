@@ -5,7 +5,7 @@ export const categoriesOpptions = [
   { text: 'Fruit', value: 1 },
   { text: 'Seafood', value: 2 },
   { text: 'Dried food', value: 3 }
-  ]
+]
 export const shipperOpptions = [
   { text: 'Bus Services', value: 0 },
   { text: 'Fast Delivery Services', value: 1 },
@@ -41,3 +41,8 @@ export const messageTypes = {
   error: 'error',
   success: 'success'
 }
+export const listProduct = [
+  { image: require('../assets/images/banner1.jpg'), name: 'apple', id: 0 },
+  { image: require('../assets/images/banner1.jpg'), id: 1 },
+  { image: require('../assets/images/banner1.jpg'), id: 2 }
+]

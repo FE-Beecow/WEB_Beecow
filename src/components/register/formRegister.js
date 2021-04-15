@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './register.scss';
 import { validPassword, isEmailValid, validNumber } from '../../common/emplement/definition';
 import CheckList from '../../common/components/checkList';
 import { shipperOpptions, genderOptions, categoriesOpptions } from '../../common/constants';
