@@ -14,12 +14,16 @@ import FormRegister from './components/register/formRegister';
 import Alert from './common/components/alert';
 import Navbar from './components/navbar';
 import Menu from './components/home/menu';
+import ListProduct from './components/admin/listProduct';
+import AddProduct from './components/admin/addProduct';
 
 export default class App extends Component {
   render() {
     return (
       <Router>
         <Menu/>
+        <ListProduct/>
+        <AddProduct/>
         {/* <Navbar /> */}
         {/* <Alert /> */}
         <Switch>

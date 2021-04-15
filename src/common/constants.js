@@ -46,3 +46,7 @@ export const listProduct = [
   { image: require('../assets/images/banner1.jpg'), id: 1 },
   { image: require('../assets/images/banner1.jpg'), id: 2 }
 ]
+export const unit = [
+  { text: 'VND', value: 0 },
+  { text: 'USD', value: 1 },
+]

@@ -242,18 +242,6 @@ export default class Menu extends Component {
                             </div>
                             <div className="col-sm-4">
                               <div className="megaone">
-                                <h2>Deal Of The Day</h2>
-                                <a href="#" className="image">
-                                  <img src="<?php echo $url_path ?>/images/banner-header.jpg" alt="null" />
-                                </a>
-                                <h4>Travel shop</h4>
-                                <h4 className="upto">Upto</h4>
-                                <h3 className="sale">70% off</h3>
-                                <a className="shop-button" href="#">shop now</a>
-                              </div>
-                            </div>
-                            <div className="col-sm-4">
-                              <div className="megaone">
                                 <h2>Top Sellers</h2>
                                 <div className="megacategory">
                                   <ul>
